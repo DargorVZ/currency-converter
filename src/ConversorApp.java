@@ -20,16 +20,29 @@ public class ConversorApp {
                     6) Peso Colombiano ==> Dólar
                     7) Salir
                     """);
-            System.out.println("Elija una opción válida:");
-            int opcionElegida = scanner.nextInt();
+            System.out.println("************************************************");
+            System.out.print("Elija una opción válida: ");
 
-            if (opcionElegida == 7){
-                System.out.println("Gracias por usar el Conversor de Monedas");
-                menu = false;
+            if (!scanner.hasNextInt()) {
+                System.out.println("Entrada inválida. Ingrese un número del 1 al 7.\n");
+                scanner.next();
                 continue;
             }
 
-            System.out.println("Ingrese el valor que desea convertir:");
+            int opcionElegida = scanner.nextInt();
+
+            if (opcionElegida == 7) {
+                System.out.println("Gracias por usar el Conversor de Monedas");
+                break;
+            }
+
+            System.out.print("Ingrese el valor que desea convertir: ");
+            if (!scanner.hasNextDouble()) {
+                System.out.println("Entrada inválida. Debe ingresar un número decimal.\n");
+                scanner.next();
+                continue;
+            }
+
             double cantidad = scanner.nextDouble();
             String monedaInicial = "", monedaFinal = "";
 
@@ -41,17 +54,19 @@ public class ConversorApp {
                 case 5 -> { monedaInicial = "USD"; monedaFinal = "COP"; }
                 case 6 -> { monedaInicial = "COP"; monedaFinal = "USD"; }
                 default -> {
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opción inválida.\n");
                     continue;
                 }
             }
 
-            Monedas conversion = convertidor.convertirMoneda(monedaInicial, monedaFinal);
-            double resultado = cantidad * conversion.conversion_rate();
-
-            System.out.printf("El valor %.2f [%s] corresponde al valor final de ==> %.2f [%s]",
-                    cantidad, monedaInicial, resultado, monedaFinal);
-            System.out.println("************************************************");
+            try {
+                Conversion conversion = convertidor.convertirMoneda(monedaInicial, monedaFinal);
+                double resultado = cantidad * conversion.conversion_rate();
+                System.out.printf("El valor %.2f [%s] corresponde al valor final de %.2f [%s]%n%n",
+                        cantidad, monedaInicial, resultado, monedaFinal);
+            } catch (RuntimeException e) {
+                System.out.println(" Ocurrió un error: " + e.getMessage() + "\n");
+            }
         }
         scanner.close();
     }
