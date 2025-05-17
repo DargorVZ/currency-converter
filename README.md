@@ -1,4 +1,4 @@
-# 💱 Conversor de Conversion - Java
+# 💱 Conversor de Monedas - Java
 
 Aplicación de consola desarrollada en Java que permite convertir entre diferentes monedas utilizando la API de ExchangeRate.
 
@@ -9,12 +9,10 @@ Aplicación de consola desarrollada en Java que permite convertir entre diferent
 - Interfaz de consola clara y fácil de usar.
 - Menú interactivo para seleccionar conversiones.
 - Permite convertir entre:
-  - Dólar ⇨ Peso Argentino
-  - Peso Argentino ⇨ Dólar
-  - Dólar ⇨ Real Brasileño
-  - Real Brasileño ⇨ Dólar
-  - Dólar ⇨ Peso Colombiano
-  - Peso Colombiano ⇨ Dólar
+  - Dólar [USD]
+  - Peso Argentino [ARS]
+  - Real Brasileño [BRL]
+  - Peso Colombiano [COP]
 - Repite el menú hasta que el usuario elige salir.
 - Obtiene el tipo de cambio actual usando la ExchangeRate API.
 - Utiliza `HttpClient` para la conexión HTTP y `Gson` para parsear el JSON.
@@ -45,7 +43,6 @@ Aplicación de consola desarrollada en Java que permite convertir entre diferent
 ---
 
 ## 🧾 Estructura del proyecto
-
 
 
 ```
