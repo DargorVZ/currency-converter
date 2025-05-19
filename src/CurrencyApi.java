@@ -6,7 +6,7 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 
 public class CurrencyApi {
-    private static final String API_KEY = "3ed15e384a70fe97d6c7d170";
+    private static final String API_KEY = "Aquí va tu llave";
 
     public Conversion convertirMoneda(String monedaInicial, String monedaFinal) {
         String direccion = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/pair/" + monedaInicial + "/" + monedaFinal;
